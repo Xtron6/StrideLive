@@ -1,0 +1,463 @@
+<?php
+  session_start();
+
+  if (!isset($_SESSION['username'])) {
+  	$_SESSION['msg'] = "You must log in first";
+  	header('location: loginf.php');
+  }
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['username']);
+  	header("location: loginf.php");
+  }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../style.css?v=1.1">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Open+Sans&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="Logos/SL-FavIcon.ico">
+     <meta name="viewport" content="width=device-
+   width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="canonical" href="https://stridelive.co/crew">
+     <title>Meet the Running Through The Podcast Crew!</title>
+     <meta name="description" content="The Running Through the Mind Crew is quite the handsome group of guys! Come get to know us and give us a follow on our social platforms.">
+</head>
+<body style="overflow-y: auto; -webkit-overflow-scrolling: touch;">
+  <!--Navigation-->
+  <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index"><img src="../Logos/StrideLive.png" alt="Strive Live Logo" class="logo"></a>
+      <form class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive">
+<span>&#9776;</span>
+</form>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="../index">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../podcast">Podcast</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href= "../crew">Crew</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../products">Affiliate Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../shop">Shop RTM</a>
+        </li>
+            </ul>
+          </div>
+    </div>
+  </nav>
+<script>
+$(document).ready(function () {
+
+	$('.star').on('click', function () {
+      $(this).toggleClass('star-checked');
+    });
+
+    $('.ckbox label').on('click', function () {
+      $(this).parents('tr').toggleClass('selected');
+    });
+
+    $('.btn-filter').on('click', function () {
+      var $target = $(this).data('target');
+      if ($target != 'all') {
+        $('.table tr').css('display', 'none');
+        $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+      } else {
+        $('.table tr').css('display', 'none').fadeIn('slow');
+      }
+    });
+
+ });
+ </script>
+
+<style>
+.content h1 {
+	text-align: center;
+}
+.content .content-footer p {
+	color: #6d6d6d;
+    font-size: 12px;
+    text-align: center;
+}
+.content .content-footer p a {
+	color: inherit;
+	font-weight: bold;
+}
+.panel {
+	border: 1px solid #ddd;
+	background-color: #fcfcfc;
+}
+.panel .btn-group {
+	margin: 15px 0 30px;
+}
+.panel .btn-group .btn {
+	transition: background-color .3s ease;
+}
+.table-filter {
+	background-color: #fff;
+	border-bottom: 1px solid #eee;
+}
+.table-filter tbody tr:hover {
+	cursor: pointer;
+	background-color: #eee;
+}
+.table-filter tbody tr td {
+	padding: 10px;
+	vertical-align: middle;
+	border-top-color: #eee;
+}
+.table-filter tbody tr.selected td {
+	background-color: #eee;
+}
+.table-filter tr td:first-child {
+	width: 38px;
+}
+.table-filter tr td:nth-child(2) {
+	width: 35px;
+}
+.ckbox {
+	position: relative;
+}
+.ckbox input[type="checkbox"] {
+	opacity: 0;
+}
+.ckbox label {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.ckbox label:before {
+	content: '';
+	top: 1px;
+	left: 0;
+	width: 18px;
+	height: 18px;
+	display: block;
+	position: absolute;
+	border-radius: 2px;
+	border: 1px solid #bbb;
+	background-color: #fff;
+}
+.ckbox input[type="checkbox"]:checked + label:before {
+	border-color: #2BBCDE;
+	background-color: #2BBCDE;
+}
+.ckbox input[type="checkbox"]:checked + label:after {
+	top: 3px;
+	left: 3.5px;
+       content:
+	color: #fff;
+	font-size: 11px;
+	font-family: 'Glyphicons Halflings';
+	position: absolute;
+}
+.table-filter .star {
+	color: #ccc;
+	text-align: center;
+	display: block;
+}
+.table-filter .star.star-checked {
+	color: #F0AD4E;
+}
+.table-filter .star:hover {
+	color: #ccc;
+}
+.table-filter .star.star-checked:hover {
+	color: #F0AD4E;
+}
+.table-filter .media-photo {
+	width: 75px;
+	padding-right: 15px;
+}
+.table-filter .media-body {
+    display: block;
+    /* Had to use this style to force the div to expand (wasn't necessary with my bootstrap version 3.3.6) */
+}
+.table-filter .media-meta {
+	font-size: 11px;
+	color: #999;
+}
+.table-filter .media .title {
+	color: #2BBCDE;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: normal;
+	margin: 0;
+}
+.table-filter .media .title span {
+	font-size: .8em;
+	margin-right: 20px;
+}
+.table-filter .media .title span.pagado {
+	color: #5cb85c;
+}
+.table-filter .media .title span.pendiente {
+	color: #f0ad4e;
+}
+.table-filter .media .title span.cancelado {
+	color: #d9534f;
+}
+.table-filter .media .summary {
+	font-size: 14px;
+}
+#sailorTableArea{
+    max-height: 300px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+</style>
+<script type="text/javascript">
+$("input:checkbox").on('click', function() {
+  // in the handler, 'this' refers to the box clicked on
+  var $box = $(this);
+  if ($box.is(":checked")) {
+    // the name of the box is retrieved using the .attr() method
+    // as it is assumed and expected to be immutable
+    var group = "input:checkbox[name='" + $box.attr("name") + "']";
+    // the checked state of the group/box on the other hand will change
+    // and the current value is retrieved using .prop() method
+    $(group).prop("checked", false);
+    $box.prop("checked", true);
+  } else {
+    $box.prop("checked", false);
+  }
+});
+
+</script>
+<div class="container">
+	<div class="row">
+
+		<section id="#sailorTableArea" class="col-md-12 content">
+			<h1>Make your picks</h1>
+			<div class="col-lg-12 col-md-offset-2">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="pull-right">
+							<div class="btn-group">
+							        <button type="button" class="btn btn-warning btn-filter" data-target="400m">400</button>
+							        <button type="button" class="btn btn-warning btn-filter" data-target="4x4m">4x4</button>
+							        <button type="button" class="btn btn-danger btn-filter" data-target="800">800</button>
+								<button type="button" class="btn btn-success btn-filter" data-target="1500">1500</button>
+								<button type="button" class="btn btn-warning btn-filter" data-target="3km">3k Steeple</button>
+								<button type="button" class="btn btn-warning btn-filter" data-target="5km">5k</button>
+								<button type="button" class="btn btn-warning btn-filter" data-target="10km">10k</button>
+								<button type="button" class="btn btn-warning btn-filter" data-target="Marathon">Marathon</button>
+								<button type="button" class="btn btn-success btn-filter" data-target="all">All</button>
+							</div>
+						</div>
+						<div class="table-container">
+							<table class="table table-filter">
+								<tbody>
+									<tr data-status="1500">
+										<td>
+											<div class="ckbox">
+												<input type="checkbox" id="checkbox1">
+												<label for="checkbox1"></label>
+											</div>
+										</td>
+										<td>
+											<a href="javascript:;" class="star">
+												<i class="glyphicon glyphicon-star"></i>
+											</a>
+										</td>
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://bloximages.newyork1.vip.townnews.com/journalnow.com/content/tncms/assets/v3/editorial/f/33/f3355a82-e498-11e4-93a7-8f438e876533/55305486e6110.image.jpg?resize=400%2C431" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">SR: 3:30</span>
+													<h4 class="title">
+														🇺🇸Craig Engels
+														<span class="pull-right 1500">(1500)</span>
+													</h4>
+													<p class="summary">1500 USATF Champion</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="1500">
+										<td>
+											<div class="ckbox">
+												<input type="checkbox" id="checkbox3">
+												<label for="checkbox3"></label>
+											</div>
+										</td>
+										<td>
+											<a href="javascript:;" class="star">
+												<i class="glyphicon glyphicon-star"></i>
+											</a>
+										</td>
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://www.baltimoresun.com/resizer/PkMlo1ACHE3GYYDx1fM5KRcadgM=/fit-in/800x600/top/filters:fill(black)/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/ZBNCHZBR75ETBBHXA7E2JXKAIE.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">SR: 3:31</span>
+													<h4 class="title">
+														Mathew Centrowitz                             🇺🇸
+														<span class="pull-right 1500">(1500)</span>
+													</h4>
+													<p class="summary">1500 USATF Runner Up Member of Bowermen track club</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="800">
+										<td>
+											<div class="ckbox">
+												<input type="checkbox" id="checkbox2">
+												<label for="checkbox2"></label>
+											</div>
+										</td>
+										<td>
+											<a href="javascript:;" class="star">
+												<i class="glyphicon glyphicon-star"></i>
+											</a>
+										</td>
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 13, 2016</span>
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right 800">(800)</span>
+													</h4>
+													<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr data-status="1500" class="selected">
+										<td>
+											<div class="ckbox">
+												<input type="checkbox" id="checkbox4" checked>
+												<label for="checkbox4"></label>
+											</div>
+										</td>
+										<td>
+											<a href="javascript:;" class="star star-checked">
+												<i class="glyphicon glyphicon-star"></i>
+											</a>
+										</td>
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://www.twincities.com/wp-content/uploads/2016/08/ben-blankenship-cropped.jpg?w=450" class="media-photo">
+												</a>
+												<div class="media-body">
+													<span class="media-meta pull-right">Febrero 13, 2016</span>
+													<h4 class="title">
+														Ben Blakenship
+														<span class="pull-right 1500">(1500)</span>
+													</h4>
+													<p class="summary">Eugene, Oregon</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+
+									<tr data-status="1500">
+										<td>
+											<div class="ckbox">
+												<input type="checkbox" id="checkbox5">
+												<label for="checkbox5"></label>
+											</div>
+										</td>
+										<td>
+											<a href="javascript:;" class="star">
+												<i class="glyphicon glyphicon-star"></i>
+											</a>
+										</td>
+										<td>
+											<div class="media">
+												<a href="#" class="pull-left">
+													<img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+												</a>
+												<div class="media-body">
+													<h4 class="title">
+														Lorem Impsum
+														<span class="pull-right 1500">(1500)</span>
+													</h4>
+													<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</div>
+</div>
+
+<br><br>
+<footer>
+  <div class="container-fluid padding">
+    <div class="row text-center">
+      <div class="col-md-6">
+          <a href="index">
+        <img src="../Logos/StrideLive.png" alt="SL Logo" class="col-xs-4 col-sm-6 col-lg-8 col-xl-6">
+        </a>
+        <hr class="light">
+        <a href="https://twitter.com/XaviGallo" style="cursor: pointer; ">Designed By: Xavier Gallo</a>
+        <p>+1(614)-329-5403</p>
+        <a href="mailto:xavigallo@gmail.com?Subject= Hey%20Xavier!" target="_top">
+        <p><button class="button">Xavigallo@gmail.com</button></p>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <hr class="light">
+        <h5>Meet The Crew</h5>
+        <hr class="light">
+        <div style="text-decoration: none;">
+        <a href="../crew">
+        <p>Xavier Gallo</p>
+        </a>
+        <a href="../crew">
+        <p>Nick Desilva</p>
+        </a>
+        <a href="../crew">
+        <p>Brian Stroh</p>
+        </a>
+        <a href="../crew">
+        <p>Mitch Montgomery</p>
+        </a>
+      </div>
+    </div>
+      <div class="col-12">
+        <hr class="light-100">
+        <a href="index">
+        <h5><b>StrideLive.co © 2019</b></h5></a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
