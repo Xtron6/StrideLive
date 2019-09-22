@@ -1,0 +1,12 @@
+ErrorDocument 401 http://stridelive.co/error
+ErrorDocument 403 http://stridelive.co/error
+ErrorDocument 404 http://stridelive.co/error
+ErrorDocument 503 http://stridelive.co/error
+#Alternate default index page
+DirectoryIndex index
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+Header set X-UA-Compatible "IE=Edge”

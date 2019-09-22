@@ -1,0 +1,210 @@
+<?php
+  session_start();
+
+  if (!isset($_SESSION['username'])) {
+  	$_SESSION['msg'] = "You must log in first";
+  	header('location: login.php');
+  }
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['username']);
+  	header("location: login.php");
+  }
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../style.css?rnd=1.7">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Open+Sans&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="../Logos/SL-FavIcon.ico">
+   <meta name="viewport" content="width=device-
+ width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="canonical" href="https://stridelive.co/account/home">
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="../Logos/RTMBlack.JPG" />
+	<title>Account Home</title>
+</head>
+<body style="overflow-y: auto; -webkit-overflow-scrolling: touch;" id="my_div" class="home-bg">
+  <script type="text/javascript">
+
+  $(document).ready(function() {
+  $('.has-animation').each(function(index) {
+    $(this).delay($(this).data('delay')).queue(function(){
+      $(this).addClass('animate-in');
+    });
+  });
+});
+
+window.onload=function()  //executes when the page finishes loading
+{
+	setTimeout(func1, 2000);  //sets a timer which calls function func1 after 2,000 milliseconds = 2 secs.
+
+};
+  </script>
+  <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+    <div class="container-fluid">
+      <div class="col-s">
+      <a class="navbar-brand" href="../index"><img src="../Logos/StrideLive.png" alt="Strive Live Logo" class=logo></a>
+            </div>
+      <form class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive">
+<span>&#9776;</span>
+</form>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="../index">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../podcast">Podcast</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href= "../crew">Crew</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href=../"products">Affiliate Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../shop">Shop RTM</a>
+        </li>
+            </ul>
+          </div>
+    </div>
+  </nav>
+<div class="homenav page-wrapper container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-lg-3 col-xl-3 col-sm-4 sidebar3">
+                <div class="left-navigation">
+                    <ul>
+                      <a href="info.php">
+                        <li>&#128102 Account Info</li></a>
+                        <a href="../fantasy">
+                        <li>&#127939 Fantasy Track</li></a>
+                        <a href="#.php">
+                        <li>&#128107 Friends</li></a>
+                        <a href="../podcast">
+                        <li>&#129504 Running Podcast</li></a>
+                      </ul>
+                        <ul>
+                        <a href="info.php">
+                        <li><i class="fa fa-cog" aria-hidden="true"></i>Account Settings</li></a>
+                        <li><i style="color: red;" class="fa fa-power-off" aria-hidden="true"></i><a href="home.php?logout='1'" style="color: red;"> Logout</a> </li>
+                    </ul>
+                </div>
+            </div>
+</div>
+</div>
+
+<div class="btn-toolbar">
+    <button class="btn btn-primary">New User</button>
+    <button class="btn">Import</button>
+    <button class="btn">Export</button>
+</div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+          <th style="width: 36px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Mark</td>
+          <td>Tompson</td>
+          <td>the_mark7</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ashley</td>
+          <td>Jacobs</td>
+          <td>ash11927</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Audrey</td>
+          <td>Ann</td>
+          <td>audann84</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>John</td>
+          <td>Robinson</td>
+          <td>jr5527</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Aaron</td>
+          <td>Butler</td>
+          <td>aaron_butler</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Chris</td>
+          <td>Albert</td>
+          <td>cab79</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div class="pagination">
+    <ul>
+        <li><a href="#">Prev</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">Next</a></li>
+    </ul>
+</div>
+<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Delete Confirmation</h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text">Are you sure you want to delete the user?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+    </div>
+</div>
+      </body>
+      </html>
